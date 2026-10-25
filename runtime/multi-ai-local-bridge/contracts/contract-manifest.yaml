@@ -1,0 +1,45 @@
+name: multi-ai-local-bridge-contracts
+contract_version: '1.0'
+major_version: 1
+status: stable
+boundaries:
+- bridge
+- client
+- storage
+- source-preservation
+invariants:
+  - derived_semantic_is_disposable
+  - semantic_recall_returns_authoritative_source
+  - source_memory_never_rewritten_by_semantic_processing
+- agent_intermediary_adapter_contract
+- local_ssot
+- clients_do_not_access_storage_directly
+- capture_is_not_memory_commit
+- raw_archive_is_separate_from_long_term_memory
+- transaction_id_spans_recall_to_capture
+- idempotent_writes
+- conflict_preserves_provenance
+- secrets_never_enter_memory
+- runtime_evidence_over_ui
+- memory_belongs_to_shared_memory_space_not_client
+- cross_model_read_write
+- cross_client_web_desktop_api_agent
+- intermediary_neutral_openclaw_is_default_only
+- bidirectional_memory_software_sync
+- obsidian_is_default_not_dependency
+- provider_native_memory_only_when_supported_interface_exists
+- external_concurrent_edits_create_conflict_not_silent_overwrite
+- source_memory_migration_is_byte_exact_before_derivation
+- derived_views_never_replace_original_source_memory
+- uninstall_preserves_user_memory_by_default
+compatibility:
+  backward_compatible_additions: allowed
+  breaking_changes: require_new_major
+defaults:
+  intermediary: openclaw
+  memory_software: obsidian
+required_acceptance:
+  cross_model_shared_memory: true
+  cross_client_shared_memory: true
+  cross_intermediary_semantic_equivalence: true
+  cross_storage_bidirectional_sync: true

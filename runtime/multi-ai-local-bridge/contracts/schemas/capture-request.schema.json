@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/multi-ai-local-bridge/v1/capture-request.schema.json",
+  "title": "CaptureRequest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "transaction_id",
+    "client",
+    "memory_space",
+    "session_id",
+    "turn_id",
+    "idempotency_key",
+    "turn"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "1.0"
+    },
+    "transaction_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "client": {
+      "$ref": "client-identity.schema.json"
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "turn_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "turn": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "user_text",
+        "assistant_text",
+        "injected_memory_ids",
+        "explicit_remember_request"
+      ],
+      "properties": {
+        "user_text": {
+          "type": "string"
+        },
+        "assistant_text": {
+          "type": "string"
+        },
+        "injected_memory_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "explicit_remember_request": {
+          "type": "boolean"
+        },
+        "metadata": {
+          "type": "object"
+        }
+      }
+    },
+    "memory_space": {
+      "$ref": "memory-space.schema.json"
+    },
+    "execution_context": {
+      "$ref": "execution-context.schema.json"
+    }
+  }
+}

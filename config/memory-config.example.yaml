@@ -1,0 +1,33 @@
+schema_version: 1
+
+ssot:
+  type: local
+  root: /path/to/local/memory
+  backend: markdown
+
+clients:
+  - chatgpt
+  - grok
+  - openclaw
+
+capture:
+  long_term_filter: true
+  raw_archive: false
+  explicit_remember: accept
+  sensitive_memory: explicit_only
+  save_assistant_guesses: false
+
+recall:
+  max_items: 20
+  exclude_obsolete: true
+  include_conflicts_when_relevant: true
+
+security:
+  store_credentials_in_memory: false
+  log_secret_values: false
+  least_privilege: true
+
+audit:
+  enabled: true
+  store_full_user_text: false
+  store_full_assistant_text: false

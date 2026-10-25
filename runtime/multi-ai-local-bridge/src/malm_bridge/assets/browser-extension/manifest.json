@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Multi-AI Local Memory",
+  "version": "0.7.0",
+  "description": "Shared local memory for multiple web AI clients.",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkULHii7s7Qjb+0pRIW91K5QwNRsR9Xp35O6lC+O4r/dmHizg97kTSY+XhETflsu5xk55dw3/XwwyqGHs7MIYr2wfqMiVAYjbOFuwHCzWPSIwjxZ2TaoKrUHBoLan05yCsPJNEfr+NIp6dJwE7R0yI3tojBxWfG9M4JgFS7wg35V1SKbd60xR+zhHWFDOshZ8jM+SgulTozUiRqqLA7ACGYKLELqZyI485Darg92BSbEE1wtrw2V5OlZIQcg5Ap5vzQTHAGgqgEU38nl3cddKTTQiifmsbTo4Tn9ZeZnGEegC5TVnrRDI1A9aw4n3DgOfvz+twHXQqBhMxt8lXE3QowIDAQAB",
+  "permissions": [
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1/*",
+    "http://localhost/*"
+  ],
+  "background": {
+    "service_worker": "src/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*",
+        "https://grok.com/*",
+        "https://x.com/i/grok*"
+      ],
+      "js": [
+        "src/runtime-core.js",
+        "src/site-chatgpt.js",
+        "src/site-grok.js",
+        "src/content-script.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "client_id": "grok",
+  "conversation_id": "example-conversation",
+  "turn_id": "example-turn",
+  "query": "Continue the user's current project using their established rules.",
+  "project": "example-project",
+  "max_items": 20
+}

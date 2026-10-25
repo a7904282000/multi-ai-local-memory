@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/multi-ai-local-bridge/v1/recall-request.schema.json",
+  "title": "RecallRequest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "transaction_id",
+    "client",
+    "memory_space",
+    "session_id",
+    "turn_id",
+    "query"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "1.0"
+    },
+    "transaction_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "client": {
+      "$ref": "client-identity.schema.json"
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "turn_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "query": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "user_text"
+      ],
+      "properties": {
+        "user_text": {
+          "type": "string"
+        },
+        "conversation_summary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "max_items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "memory_space": {
+      "$ref": "memory-space.schema.json"
+    },
+    "execution_context": {
+      "$ref": "execution-context.schema.json"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "multi-ai-local-memory",
+  "skill_version": "1.0.0-beta.1",
+  "bridge_runtime_version": "0.7.0",
+  "release_tier": "public-beta",
+  "default_memory_app": "Obsidian",
+  "default_intermediary": "OpenClaw",
+  "live_acceptance": "user-environment",
+  "source_memory_preservation": "byte-for-byte",
+  "browser_store_status": "unpublished",
+  "stable_release_blockers": [
+    "browser-extension-trusted-distribution"
+  ]
+}

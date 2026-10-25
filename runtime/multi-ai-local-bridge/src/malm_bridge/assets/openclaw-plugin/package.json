@@ -1,0 +1,17 @@
+{
+  "name": "multi-ai-local-memory-openclaw",
+  "version": "0.7.0",
+  "private": true,
+  "type": "module",
+  "openclaw": {
+    "extensions": [
+      "./index.js"
+    ],
+    "install": {
+      "minHostVersion": ">=2026.9.3"
+    },
+    "compat": {
+      "pluginApi": ">=2026.9.3"
+    }
+  }
+}

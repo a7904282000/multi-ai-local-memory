@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Recall Request",
+  "type": "object",
+  "required": ["client_id", "query"],
+  "properties": {
+    "client_id": {"type": "string"},
+    "conversation_id": {"type": ["string", "null"]},
+    "turn_id": {"type": ["string", "null"]},
+    "query": {"type": "string"},
+    "project": {"type": ["string", "null"]},
+    "max_items": {"type": "integer", "minimum": 1, "maximum": 100}
+  },
+  "additionalProperties": false
+}

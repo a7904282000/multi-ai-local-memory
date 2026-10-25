@@ -1,0 +1,13 @@
+{
+  "id": "multi-ai-local-memory",
+  "name": "Multi-AI Local Memory",
+  "description": "Automatic shared local-memory recall and capture through Multi-AI Local Bridge.",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "profilePath": {"type": "string"},
+      "recallMaxItems": {"type": "integer", "minimum": 1, "maximum": 100, "default": 12}
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Memory Transaction Audit",
+  "type": "object",
+  "required": ["transaction_id", "client_id", "status"],
+  "properties": {
+    "transaction_id": {"type": "string"},
+    "client_id": {"type": "string"},
+    "conversation_id": {"type": ["string", "null"]},
+    "turn_id": {"type": ["string", "null"]},
+    "status": {"enum": ["PASS", "FAIL", "UNPROVEN", "BLOCKED"]},
+    "send_intent": {"type": ["string", "null"]},
+    "recall_status": {"type": ["string", "null"]},
+    "capture_status": {"type": ["string", "null"]},
+    "final_write_status": {"type": ["string", "null"]},
+    "duplicate_count": {"type": ["integer", "null"], "minimum": 0},
+    "last_blocking_guard": {"type": ["string", "null"]}
+  },
+  "additionalProperties": true
+}

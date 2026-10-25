@@ -1,0 +1,99 @@
+openapi: 3.1.0
+info:
+  title: Multi-AI Local Bridge
+  version: 1.0.0
+  description: Stable v1 application API for a local multi-AI shared-memory bridge.
+servers:
+  - url: https://127.0.0.1:{port}
+    variables:
+      port:
+        default: "18790"
+paths:
+  /v1/health:
+    get:
+      summary: Bridge liveness/readiness
+      responses:
+        "200":
+          description: Healthy bridge
+  /v1/capabilities:
+    get:
+      summary: Discover stable and optional capabilities
+      responses:
+        "200":
+          description: Capability document
+  /v1/recall:
+    post:
+      summary: Recall relevant long-term memory for the current turn
+      parameters:
+        - in: header
+          name: X-MALM-Contract-Version
+          required: true
+          schema: { type: string, const: "1.0" }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/recall-request.schema.json
+      responses:
+        "200":
+          description: Recall result
+        "400":
+          description: Invalid request
+        "401":
+          description: Authentication failed
+        "403":
+          description: Forbidden
+        "503":
+          description: Bridge or storage unavailable
+  /v1/capture:
+    post:
+      summary: Evaluate and persist durable memory from a completed turn
+      parameters:
+        - in: header
+          name: X-MALM-Contract-Version
+          required: true
+          schema: { type: string, const: "1.0" }
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: { type: string, minLength: 1 }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/capture-request.schema.json
+      responses:
+        "200":
+          description: Capture classification/result
+        "400":
+          description: Invalid request
+        "401":
+          description: Authentication failed
+        "403":
+          description: Forbidden
+        "409":
+          description: Conflict or idempotency conflict
+        "503":
+          description: Bridge or storage unavailable
+  /v1/session/close:
+    post:
+      summary: Close a logical client session idempotently
+      parameters:
+        - in: header
+          name: Idempotency-Key
+          required: true
+          schema: { type: string, minLength: 1 }
+      responses:
+        "200":
+          description: Session closed or already closed
+  /v1/diagnostics:
+    get:
+      summary: Privileged local diagnostics
+      description: Must not expose secrets. Must be restricted to local-admin/trusted diagnostic clients.
+      responses:
+        "200":
+          description: Safe diagnostics
+        "403":
+          description: Not permitted

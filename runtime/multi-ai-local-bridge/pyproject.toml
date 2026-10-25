@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "multi-ai-local-bridge"
+version = "0.7.0"
+description = "Provider-neutral local memory bridge core for multiple AI clients"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+malm-bridge = "malm_bridge.http_server:main"
+malm-service = "malm_bridge.service:main"
+malm-install = "malm_bridge.installer:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+malm_bridge = ["assets/browser-extension/**/*", "assets/openclaw-plugin/**/*"]

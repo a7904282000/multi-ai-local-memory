@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Capture Event",
+  "type": "object",
+  "required": ["client_id", "transaction_id", "original_user_text"],
+  "properties": {
+    "client_id": {"type": "string"},
+    "conversation_id": {"type": ["string", "null"]},
+    "turn_id": {"type": ["string", "null"]},
+    "transaction_id": {"type": "string", "minLength": 1},
+    "original_user_text": {"type": "string"},
+    "assistant_summary": {"type": ["string", "null"]},
+    "candidates": {"type": "array", "items": {"$ref": "memory-atom.schema.json"}}
+  },
+  "additionalProperties": true
+}

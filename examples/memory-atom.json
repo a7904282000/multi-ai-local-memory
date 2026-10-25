@@ -1,0 +1,16 @@
+{
+  "id": "pref-example-001",
+  "category": "preference",
+  "project": null,
+  "fact": "User prefers concise comparison tables for multi-option decisions.",
+  "status": "VERIFIED",
+  "source_type": "explicit_user_statement",
+  "source_agent": "chatgpt",
+  "source_ref": "conversation-turn-example",
+  "last_known_date": "2026-10-25",
+  "confidence": 1.0,
+  "mutable": true,
+  "sensitivity": "normal",
+  "supersedes": null,
+  "notes": "Example only; replace with real local memory."
+}
